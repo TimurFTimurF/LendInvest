@@ -36,31 +36,34 @@ $loan->addTranches($tranche_1);
 $loan->addTranches($tranche_2);
 
 try {
-    $transaction_1 = new Transaction(600, new DateTime('03.10.2015'), $tranche_1, $investor_1);
+    $transaction_1 = new Transaction(1000, new DateTime('03.10.2015'), $tranche_1, $investor_1);
     $isPay_1 = $transaction_1->payByTranche();
 } catch (Exception $e) {
-    error_log($e->getMessage(), 3, "./logs/exceptions.log");
+    error_log(date("Y-m-d H:i:s ", time()) . $e->getMessage(), 3, "./logs/exceptions.log");
 }
 
 try {
     $transaction_2 = new Transaction(1, new DateTime('04.10.2015'), $tranche_1, $investor_2);
     $isPay_2 = $transaction_2->payByTranche();
 } catch (Exception $e) {
-    error_log($e->getMessage(), 3, "./logs/exceptions.log");
+    error_log(date("Y-m-d H:i:s ", time()) . $e->getMessage(), 3, "./logs/exceptions.log");
 }
 
 try {
     $transaction_3 = new Transaction(500, new DateTime('10.10.2015'), $tranche_2, $investor_3);
     $isPay_3 = $transaction_3->payByTranche();
 } catch (Exception $e) {
-    error_log($e->getMessage(), 3, "./logs/exceptions.log");
+    error_log(date("Y-m-d H:i:s ", time()) . $e->getMessage(), 3, "./logs/exceptions.log");
 }
 
 try {
     $transaction_4 = new Transaction(1000, new DateTime('16.11.2015'), $tranche_2, $investor_4);
     $isPay_4 = $transaction_4->payByTranche();
 } catch (Exception $e) {
-    error_log($e->getMessage(), 3, "./logs/exceptions.log");
+    error_log(date("Y-m-d H:i:s ", time()) . $e->getMessage(), 3, "./logs/exceptions.log");
 }
 
-echo $investor_3->calculateMonthPercentage(10);
+echo $investor_1->calculateMonthPercentage(10) . "\n\r";
+echo $investor_2->calculateMonthPercentage(10) . "\n\r";
+echo $investor_3->calculateMonthPercentage(10) . "\n\r";
+echo $investor_4->calculateMonthPercentage(10) . "\n\r";
